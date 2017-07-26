@@ -1,0 +1,64 @@
+<head>
+    <style>
+        a, button {
+            font-size:18px;
+            margin: 20px;
+            text-decoration: none;
+            transition: all .1s ease-in-out;
+            background: none;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+        a:hover, button:hover {
+            color: red;
+        }
+        button {
+            color: green;
+        }
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        textarea {
+            height: 400px;
+            width: 400px;
+            padding: 10px;
+        }
+        body {
+            font-family: "Roboto", sans-serif;
+            display: flex;
+            justify-content: center;
+            background-color: #BBB;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            height: 480px;
+        }
+        p {
+            font-weight: bold;
+            margin-top: -0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="flex-container">
+            <p>Please enter course OUs seperated by commas:</p>
+        </div>
+        <div class="flex-container">
+            <textarea id="course-container" placeholder="Course OUs ..."></textarea>
+        </div>
+        <div class="flex-container">
+            <button onclick="setBatch()">Generate Batch</button>
+            <a id="batch-download" href="#" download="HTMLCrawler.bat">Download Batch</a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="batchCreator.js"></script>
+</body>
+
