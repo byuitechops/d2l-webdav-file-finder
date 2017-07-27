@@ -14,3 +14,8 @@ function setBatch() {
 function getValues() {
     return document.getElementById('course-container').value.replace(/\s/g, '').split(',');
 }
+
+function enableButton() {
+    document.getElementById('batch-download').classList = '';
+    document.getElementById('batch-download').setAttribute('download', 'HTMLCrawler.bat');
+}
