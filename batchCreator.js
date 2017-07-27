@@ -10,7 +10,7 @@ function setBatch() {
 
         bat_source += `call cd %homeDir%
                     call cd ${course}
-                    call dir /s /b *.html >> ../HTMLfiles.csv\n`
+                    call dir /s /b *.${getFileType()} >> ../HTMLfiles.${getOutputType()}\n`
     });
 
 
@@ -26,4 +26,14 @@ function setBatch() {
 function enableButton() {
     document.getElementById('batch-download').classList = '';
     document.getElementById('batch-download').setAttribute('download', 'HTMLCrawler.bat');
+}
+
+function getFileType() {
+    var el = document.getElementById('filetype');
+    return el.options[el.selectedIndex].text;
+}
+
+function getOutputType() {
+    var el = document.getElementById('output');
+    return el.options[el.selectedIndex].text;
 }

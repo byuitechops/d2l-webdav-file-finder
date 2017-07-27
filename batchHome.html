@@ -14,21 +14,27 @@
     </div>
     <div class="container">
         <div class="select-container">
-            <select>
-                <option value="html">html</option>
-                <option value="css">css</option>
-                <option value="svg">svg</option>
-                <option value="png">png</option>
-                <option value="pdf">pdf</option>
-                <option value="swf">swf</option>
-                <option value="jpg">jpg</option>
-                <option value="docx">docx</option>
-                <option value="js">js</option>
-            </select>
-            <select>
-                <option value="html">csv</option>
-                <option value="css">txt</option>
-            </select>
+            <div>
+                <p>File Type:</p>
+                <select id="filetype">
+                    <option value="html">html</option>
+                    <option value="css">css</option>
+                    <option value="svg">svg</option>
+                    <option value="png">png</option>
+                    <option value="pdf">pdf</option>
+                    <option value="swf">swf</option>
+                    <option value="jpg">jpg</option>
+                    <option value="docx">docx</option>
+                    <option value="js">js</option>
+                </select>
+            </div>
+            <div>
+                <p>Output Type:</p>
+                <select id="output">
+                    <option value="html">csv</option>
+                    <option value="css">txt</option>
+                </select>
+            </div>
         </div>
         <div class="flex-container">
             <textarea id="course-container" placeholder="Course OUs ..."></textarea>
