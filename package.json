@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/byuitechops/d2l-webdav-file-finder#readme",
   "dependencies": {
+    "d3-dsv": "^1.0.5",
+    "node-cmd": "^3.0.0",
     "prompt": "^1.0.0"
   }
 }

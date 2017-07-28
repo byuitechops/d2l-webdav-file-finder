@@ -1,18 +1,35 @@
 var prompt = require('prompt');
 var fs = require('fs');
+var d3 = require('d3-dsv');
+var path = require('path');
+var cmd = require('node-cmd');
 
 
 function main() {
     // Read in the settings file
-    var settings = fs.readFileSync('settings.json', 'utf8');
+    var settings = readFile('settings.json');
+    settings = JSON.parse(settings);
 
     // Prompt the user with the default settings
     getValues(settings, function (error, values) {
         // Now, give the values to the setBatch function
-
+        console.log(values);
     });
 }
 
+/**
+ * This function reads any file given it by the program.
+ * 
+ * @param   {string} filename The filename of a file to read
+ * @returns {string} The string of the read file
+ */
+function readFile(filename) {
+    var readData;
+
+    readData = fs.readFileSync(filename, 'utf8');
+
+    return readData;
+}
 
 
 function getValues(settings, callback) {
@@ -27,7 +44,9 @@ function getValues(settings, callback) {
             ouNumbers: {
                 description: "Enter Filename of the file that contains the ouNumbers you are searching for",
                 type: "string",
-                default: settings.ouNumbersFile
+                default: settings.ouNumbersFile,
+                pattern: /.csv/g,
+                message: 'You must enter a csv filename (Example: ouNumbers.csv)'
             },
             fileType: {
                 description: "Filetype you are looking for",
@@ -50,7 +69,11 @@ function getValues(settings, callback) {
             return;
         }
 
-        console.log(response);
+        // Read in the csv
+        var ouNumbers = readFile(response.ouNumbers);
+        ouNumbers = d3.csvParse(ouNumbers);
+
+        response.ouNumbers = ouNumbers.columns;
 
         callback(null, response);
         return;
@@ -67,9 +90,13 @@ function setBatch(values) {
                     call dir /s /b *.${values.fileType} >> ../HTMLfiles.${values.outputFileType}\n`
     });
 
-
-    // Change the file path names to brightspace urls
-    // We already have the csv file, so pull that in and change it
-    var readFile = fs.readFileSync(`HTMLfiles.${values.outputFileType}`, 'utf8');
-    console.log(readFile);
+    cmd.get('HTMLCrawler.bat', function (err, data, stderr) {
+        // Change the file path names to brightspace urls
+        // We already have the csv file, so pull that in and change it
+        var readFile = fs.readFileSync(`HTMLfiles.${values.outputFileType}`, 'utf8');
+        console.log(readFile);
+    });
 }
+
+// Run main
+main();
