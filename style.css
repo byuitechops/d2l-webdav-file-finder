@@ -105,3 +105,7 @@ select {
 .bar>img {
     margin: 0 20px;
 }
+
+.upload-button {
+    padding-top: 35px;
+}

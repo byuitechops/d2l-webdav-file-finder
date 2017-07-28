@@ -35,9 +35,12 @@
                     <option value="css">txt</option>
                 </select>
             </div>
+            <div>
+                <input class="upload-button" id="upload-button" type="file">
+            </div>
         </div>
         <div class="flex-container">
-            <textarea id="course-container" placeholder="Course OUs ..."></textarea>
+            <textarea id="course-container" placeholder="123456, 456789, 123789 ..."></textarea>
         </div>
         <div class="button-container">
             <button id="generate-button" onclick="setBatch();enableButton();">Generate</button>
@@ -54,6 +57,6 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="batchCreator.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3-dsv.v1.min.js"></script>
+    <script type="text/javascript" src="bundle.js"></script>
 </body>

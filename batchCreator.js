@@ -1,7 +1,23 @@
+var sjs = require('./node_modules/shelljs');
+
 function getValues() {
     return document.getElementById('course-container').value.replace(/\s/g, '').split(',');
 }
 
+function enableButton() {
+    document.getElementById('batch-download').classList = '';
+    document.getElementById('batch-download').setAttribute('download', 'HTMLCrawler.bat');
+}
+
+function getFileType() {
+    var el = document.getElementById('filetype');
+    return el.options[el.selectedIndex].text;
+}
+
+function getOutputType() {
+    var el = document.getElementById('output');
+    return el.options[el.selectedIndex].text;
+}
 
 function setBatch() {
     var bat_source = "set homeDir=%cd%\n";
@@ -21,19 +37,9 @@ function setBatch() {
     document.querySelector("a").href = 'data:text/plain;base64,' + btoa(bat_source);
 }
 
-
-
-function enableButton() {
-    document.getElementById('batch-download').classList = '';
-    document.getElementById('batch-download').setAttribute('download', 'HTMLCrawler.bat');
+function test() {
+    var str = sjs.echo('hello world');
+    console.log(str);
 }
 
-function getFileType() {
-    var el = document.getElementById('filetype');
-    return el.options[el.selectedIndex].text;
-}
 
-function getOutputType() {
-    var el = document.getElementById('output');
-    return el.options[el.selectedIndex].text;
-}
