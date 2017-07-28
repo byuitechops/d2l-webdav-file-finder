@@ -1,0 +1,6 @@
+{
+    domain: 'byui',
+    ouNumbersFile: 'ouNumbers.csv',
+    fileType: 'html',
+    outputFileType: 'csv'
+}

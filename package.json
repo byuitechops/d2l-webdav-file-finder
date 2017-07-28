@@ -1,0 +1,27 @@
+{
+  "name": "d2l-webdav-file-finder",
+  "version": "1.0.0",
+  "description": "A program that searches an entire downloaded D2L course for a certain file type.  It outputs a CSV or TXT file with the results.",
+  "main": "batchCreator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byuitechops/d2l-webdav-file-finder.git"
+  },
+  "keywords": [
+    "Webdav",
+    "file",
+    "finder"
+  ],
+  "author": "Scott Nicholes and Zachary Williams",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/byuitechops/d2l-webdav-file-finder/issues"
+  },
+  "homepage": "https://github.com/byuitechops/d2l-webdav-file-finder#readme",
+  "dependencies": {
+    "prompt": "^1.0.0"
+  }
+}
