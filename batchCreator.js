@@ -2,7 +2,8 @@ var prompt = require('prompt');
 var fs = require('fs');
 var d3 = require('d3-dsv');
 var path = require('path');
-var cmd = require('node-cmd');
+var cmd = require('node-run-cmd');
+var http = require('http');
 
 
 function main() {
@@ -12,8 +13,15 @@ function main() {
 
     // Prompt the user with the default settings
     getValues(settings, function (error, values) {
-        // Now, give the values to the setBatch function
-        console.log(values);
+        getCoursePath(values, function (error, data) {
+            if (error) {
+                console.error(error);
+                return;
+            }
+
+            // Now, give the values to the setBatch function
+            setBatch(values);
+        });
     });
 }
 
@@ -81,20 +89,41 @@ function getValues(settings, callback) {
 }
 
 
+function getCoursePath(values, callback) {
+    values.ouNumbers.forEach(function (orgUnitId) {
+        http.get('/d2l/api/lp/1.15/courses/' + orgUnitId, function (response) {
+            if (response.statusCode == 200) {
+                var info = JSON.parse(response);
+                values.path = info.path;
+                callback(null, values);
+            } else {
+                callback('There was an error when getting the courses from brightspace: ' + response);
+            }
+        });
+    });
+}
+
+
 function setBatch(values) {
     var bat_source = "set homeDir=%cd%\n";
 
     values.ouNumbers.forEach(function (course) {
         bat_source += `call cd %homeDir%
-                    call cd ${course}
-                    call dir /s /b *.${values.fileType} >> ../HTMLfiles.${values.outputFileType}\n`
+call cd ${course}
+call dir /s /b *.${values.fileType} >> ../HTMLfiles.${values.outputFileType}\n`
     });
 
-    cmd.get('HTMLCrawler.bat', function (err, data, stderr) {
-        // Change the file path names to brightspace urls
-        // We already have the csv file, so pull that in and change it
-        var readFile = fs.readFileSync(`HTMLfiles.${values.outputFileType}`, 'utf8');
-        console.log(readFile);
+    fs.writeFileSync('HTMLCrawler.bat', bat_source);
+
+    cmd.run('HTMLCrawler.bat', {
+        onDone: function (exitCodes) {
+            console.log('finished bash');
+            // Change the file path names to brightspace urls
+            // We already have the csv file, so pull that in and change it
+            var readFile = fs.readFileSync(`HTMLfiles.${values.outputFileType}`, 'utf8');
+            readFile = d3.csvParse(readFile);
+            console.log(readFile);
+        }
     });
 }
 
