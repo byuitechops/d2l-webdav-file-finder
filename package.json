@@ -1,0 +1,26 @@
+{
+  "name": "BYUIFileFinder",
+  "version": "1.0.0",
+  "description": "BYUI File Finder",
+  "productName": "BYUI File Finder",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "BYUI - Zach Williams",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  },
+  "dependencies": {
+    "shelljs": "^0.7.8"
+  }
+}
