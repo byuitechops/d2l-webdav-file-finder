@@ -142,7 +142,8 @@ input[type="file" i] {
 }
 
 h4 {
-    margin: 20px 0 5px;
+    font-size: 20px;
+    margin: 20px 0;
 }
 
 .btn-small {
@@ -162,7 +163,7 @@ h4 {
 }
 
 .red {
-  background-color: #ff4528;  
+  background-color: #ff4528;
 }
 
 .red:hover {
