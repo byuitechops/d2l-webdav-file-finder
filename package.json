@@ -1,30 +1,26 @@
 {
-  "name": "d2l-webdav-file-finder",
-  "version": "1.0.0",
-  "description": "A program that searches an entire downloaded D2L course for a certain file type.  It outputs a CSV or TXT file with the results.",
-  "main": "batchCreator.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/byuitechops/d2l-webdav-file-finder.git"
-  },
-  "keywords": [
-    "Webdav",
-    "file",
-    "finder"
+    "name": "BYUIFileFinder",
+    "version": "1.0.0",
+    "description": "BYUI File Finder",
+    "productName": "BYUI File Finder",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "repository": "https://github.com/electron/electron-quick-start",
+    "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
   ],
-  "author": "Scott Nicholes and Zachary Williams",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/byuitechops/d2l-webdav-file-finder/issues"
-  },
-  "homepage": "https://github.com/byuitechops/d2l-webdav-file-finder#readme",
-  "dependencies": {
-    "d3-dsv": "^1.0.5",
-    "node-cmd": "^3.0.0",
-    "node-run-cmd": "^1.0.1",
-    "prompt": "^1.0.0"
-  }
+    "author": "BYUI - Zach Williams",
+    "license": "CC0-1.0",
+    "devDependencies": {
+        "electron": "~1.6.2"
+    },
+    "dependencies": {
+        "shelljs": "^0.7.8"
+    }
 }
