@@ -159,7 +159,7 @@ h4 {
 }
 
 .small-btn-container {
-    display: flex;
+    display: none;
 }
 
 .red {
@@ -176,4 +176,8 @@ h4 {
 
 .green:hover {
   background-color: #41C336;
+}
+
+.disabled {
+  background-color: #666;
 }

@@ -21,6 +21,7 @@
     "electron": "~1.6.2"
   },
   "dependencies": {
+    "async": "^2.5.0",
     "shelljs": "^0.7.8"
   }
 }
